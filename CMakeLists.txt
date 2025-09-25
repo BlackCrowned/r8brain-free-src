@@ -51,10 +51,10 @@ set(PUBLIC_HEADER_FILES
 add_library(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Set target include directories
-target_include_directories(${PROJECT_NAME} PUBLIC
+target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
-        PRIVATE
+        SYSTEM PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/DLL>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/bench>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/other>
