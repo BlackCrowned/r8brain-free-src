@@ -70,12 +70,12 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADER_
 
 if(R8B_EXTFFT)
     message("r8brain using FFT extension")
-    target_compile_definitions(${PROJECT_NAME} PRIVATE R8B_EXTFFT=1)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC R8B_EXTFFT=1)
 endif()
 
 if(R8B_FASTTIMING)
     message("r8brain using fast timing")
-    target_compile_definitions(${PROJECT_NAME} PRIVATE R8B_FASTTIMING=1)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC R8B_FASTTIMING=1)
 endif()
 
 if (R8B_IPP)
@@ -83,14 +83,14 @@ if (R8B_IPP)
     find_package(IPP)
     if(IPP_FOUND)
         target_link_libraries(${PROJECT_NAME} PRIVATE IPP::ipps IPP::ippcore IPP::ippi IPP::ippcv)
-        target_compile_definitions(${PROJECT_NAME} PRIVATE R8B_IPP=1)
+        target_compile_definitions(${PROJECT_NAME} PUBLIC R8B_IPP=1)
         message("r8brain using IPP")
     else() 
         message(WARNING "R8B_IPP enabled but IPP not found. Using PFFFT instead.")
-        target_compile_definitions(${PROJECT_NAME} PRIVATE R8B_PFFFT_DOUBLE=1)
+        target_compile_definitions(${PROJECT_NAME} PUBLIC R8B_PFFFT_DOUBLE=1)
     endif()
 else() 
-    target_compile_definitions(${PROJECT_NAME} PRIVATE R8B_PFFFT_DOUBLE=1)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC R8B_PFFFT_DOUBLE=1)
 endif()
 
 # Link dependencies
